@@ -2003,8 +2003,8 @@
 
 	local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 	local Window = Fluent:CreateWindow({
-		Title = "Trẩu roblox [ FREE ]",
-		SubTitle = "  by trauroblox",
+		Title = "No Name Hub Bf [ Beta ]",
+		SubTitle = "  By TrongNguyen_123",
 		TabWidth = 160,
 		Theme = "Dark",
 		Acrylic = false,
@@ -2019,7 +2019,7 @@
 	local toggleButton = Instance.new("ImageButton")
 	toggleButton.Size = UDim2.new(0, 50, 0, 50)
 	toggleButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-	toggleButton.Image = "rbxassetid://130160749337944"
+	toggleButton.Image = "rbxassetid://115941030583642"
 	toggleButton.ScaleType = Enum.ScaleType.Fit
 	toggleButton.BackgroundTransparency = 1
 	toggleButton.Parent = screenGui
@@ -2079,57 +2079,63 @@
 			Title = "Server"
 		}),
 		Main = Window:AddTab({
-			Title = "Farm"
+			Title = "Tab Auto Farm"
+		}),
+		halloween = Window:AddTab({
+			Title = "halloween event"
+		}),
+		Fishing = Window:AddTab({
+			Title = "Fishing Page"
 		}),
 		Settings = Window:AddTab({
-			Title = "Cài đặt Farm"
+			Title = "Farm Settings"
 		}),
 		Melee = Window:AddTab({
-			Title = "Tự động lấy Võ V2"
+			Title = "Melee V2"
 		}),
 		Quests = Window:AddTab({
-			Title = "Nhiệm vụ - Vật phẩm"
-		}),
-		SeaEvent = Window:AddTab({
-			Title = "Sự kiện Biển"
-		}),
-		Mirage = Window:AddTab({
-			Title = "Đảo Mirage + Chủng tộc V4"
-		}),
-		Drago = Window:AddTab({
-			Title = "Đảo Drago Dojo"
-		}),
-		Prehistoric = Window:AddTab({
-			Title = "Tiền sử"
-		}),
-		Raids = Window:AddTab({
-			Title = "Đột kích"
-		}),
-		Combat = Window:AddTab({
-			Title = "Chiến đấu PVP"
-		}),
-		Travel = Window:AddTab({
-			Title = "Dịch chuyển"
+			Title = "Quests"
 		}),
 		Shop = Window:AddTab({
-			Title = "Cửa hàng"
+			Title = "Shop Page"
+		}),
+		SeaEvent = Window:AddTab({
+			Title = "Sea Event"
+		}),
+		Mirage = Window:AddTab({
+			Title = "Mirage"
+		}),
+		Drago = Window:AddTab({
+			Title = "Drago Dojo"
+		}),
+		Prehistoric = Window:AddTab({
+			Title = "Prehistoric"
+		}),
+		Raids = Window:AddTab({
+			Title = "Raids"
+		}),
+		Combat = Window:AddTab({
+			Title = "Combat"
+		}),
+		Travel = Window:AddTab({
+			Title = "Travel"
 		}),
 		Misc = Window:AddTab({
-			Title = "Khác"
+			Title = "Misc"
 		})
 	}
 
 	Tabs.Discord:AddButton({
-		Title = "Link Join Sever Discord",
+		Title = "Join Sever TrongNguyen Hub",
 		Description = "Đây nha anh em ( Copy rồi dán vào trình duyệt )",
 		Callback = function()
-			setclipboard(tostring("https://discord.gg/s8R9b5NfsU"))
+			setclipboard(tostring("https://discord.gg/HVmCgCfFct"))
 		end
 	})
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
 	local Players = game:GetService("Players")
 	if World3 then
-		Tabs.Main:AddSection("Trẩu Roblox")
+		Tabs.Main:AddSection("Tab Farm")
 		local TeleportToggle = Tabs.Main:AddToggle("tpSubmarineWorker", {
 			Title = "Bay đến NPC Farm Level Trên 2600",
 			Description = "Teleport to Submarine Worker (Level >= 2600, World 3 only)",
@@ -2175,7 +2181,7 @@
 	end
 	local FarmLevel = Tabs.Main:AddToggle("FarmLevel", {
 		Title = "Auto Farm Level",
-		Description = "Famr level cày cấp",
+		Description = "Level 1 - 2800",
 		Default = false
 	})
 	FarmLevel:OnChanged(function(Value)
@@ -2220,8 +2226,7 @@
 				end)
 			end
 		end
-	end)
-
+	end)	
 	local BossDropdown = Tabs.Main:AddDropdown("BossDropdown", {
 		Title = "Chọn boss",
 		Description = "Chọn boss để farm",
@@ -2809,7 +2814,7 @@
 	end)
 	end
 	Tabs.Main:AddSection("Miscellanea / Quest")
-	local ClosetMons = Tabs.Main:AddToggle("ClosetMons", {
+local ClosetMons = Tabs.Main:AddToggle("ClosetMons", {
 		Title = "Auto Farm Nearest",
 		Description = "Farm Xung Quanh",
 		Default = false
@@ -11567,4 +11572,107 @@ end)
 			end)
 		end)
 	end)
-	Window:SelectTab(1)
+	Window:SelectTab(1)	
+Fishing = Tabs.Fish:AddToggle("F", {Title = "Auto Fishing", Default = _G.AutoFishing})
+Fishing:OnChanged(function(Value)
+    _G.AutoFishing = Value
+end)
+
+local Players2 = game:GetService("Players")
+local LocalPlayer2 = Players2.LocalPlayer
+local Workspace2 = game:GetService("Workspace")
+local FishReplicated2 = game:GetService("ReplicatedStorage"):WaitForChild("FishReplicated")
+local FishingRequest2 = FishReplicated2:WaitForChild("FishingRequest")
+local Config2 = require(FishReplicated2.FishingClient.Config)
+local GetWaterHeight2 = require(game:GetService("ReplicatedStorage").Util.GetWaterHeightAtLocation)
+local maxdistance2 = Config2.Rod.MaxLaunchDistance
+
+task.spawn(function()
+    while task.wait(0.5) do
+        if _G.AutoFishing then
+            pcall(function()
+                local Char = LocalPlayer2.Character or LocalPlayer2.CharacterAdded:Wait()
+                local hrm = Char:FindFirstChild("HumanoidRootPart")
+                local Tool = Char:FindFirstChildOfClass("Tool")
+                if not (hrm and Tool) then return end
+
+                local waterHeight = GetWaterHeight2(hrm.Position)
+                local _, hitPos = Workspace2:FindPartOnRayWithIgnoreList(
+                    Ray.new(Char.Head.Position, hrm.CFrame.LookVector * maxdistance2),
+                    {Char, Workspace2.Characters, Workspace2.Enemies}
+                )
+                local pos = Vector3.new(hitPos.X, math.max(hitPos.Y, waterHeight), hitPos.Z)
+                local State = Tool:GetAttribute("State")
+                local ServerState = Tool:GetAttribute("ServerState")
+
+                if State == "ReeledIn" or ServerState == "ReeledIn" then
+                    FishingRequest2:InvokeServer("StartCasting")
+                    task.wait()
+                    FishingRequest2:InvokeServer("CastLineAtLocation", pos, 100, true)
+                elseif ServerState == "Biting" then
+                    FishingRequest2:InvokeServer("Catching", true)
+                    task.wait(0.1)
+                    FishingRequest2:InvokeServer("Catch", 1)
+                end
+            end)
+        end
+    end
+end)
+
+Fishing = Tabs.Fishing:,{Title = "Auto Fishing", Default = _G.AutoFishing})
+Fishing:OnChanged(function(Value)
+    _G.AutoFishing = Value
+end)
+
+local Players2 = game:GetService("Players")
+local LocalPlayer2 = Players2.LocalPlayer
+local Workspace2 = game:GetService("Workspace")
+local FishReplicated2 = game:GetService("ReplicatedStorage"):WaitForChild("FishReplicated")
+local FishingRequest2 = FishReplicated2:WaitForChild("FishingRequest")
+local Config2 = require(FishReplicated2.FishingClient.Config)
+local GetWaterHeight2 = require(game:GetService("ReplicatedStorage").Util.GetWaterHeightAtLocation)
+local maxdistance2 = Config2.Rod.MaxLaunchDistance
+
+task.spawn(function()
+    while task.wait(0.5) do
+        if _G.AutoFishing then
+            pcall(function()
+                local Char = LocalPlayer2.Character or LocalPlayer2.CharacterAdded:Wait()
+                local hrm = Char:FindFirstChild("HumanoidRootPart")
+                local Tool = Char:FindFirstChildOfClass("Tool")
+                if not (hrm and Tool) then return end
+
+                local waterHeight = GetWaterHeight2(hrm.Position)
+                local _, hitPos = Workspace2:FindPartOnRayWithIgnoreList(
+                    Ray.new(Char.Head.Position, hrm.CFrame.LookVector * maxdistance2),
+                    {Char, Workspace2.Characters, Workspace2.Enemies}
+                )
+                local pos = Vector3.new(hitPos.X, math.max(hitPos.Y, waterHeight), hitPos.Z)
+                local State = Tool:GetAttribute("State")
+                local ServerState = Tool:GetAttribute("ServerState")
+
+                if State == "ReeledIn" or ServerState == "ReeledIn" then
+                    FishingRequest2:InvokeServer("StartCasting")
+                    task.wait()
+                    FishingRequest2:InvokeServer("CastLineAtLocation", pos, 100, true)
+                elseif ServerState == "Biting" then
+                    FishingRequest2:InvokeServer("Catching", true)
+                    task.wait(0.1)
+                    FishingRequest2:InvokeServer("Catch", 1)
+                end
+            end)
+        end
+    end
+end)
+halloween:AddSeperator("Halloween Event")
+halloween:AddToggle({,Default=false,Callback=function(Value)_G.AutoTrickOrTreat=Value end})
+local Doors=World1 and DoorBySea.World1 or World2 and DoorBySea.World2 or DoorBySea.World3
+local TargetEnemies={["Gorilla"]=true,["Vampire"]=true,["rip_return"]=true,["Rip Infantry"]=true,["Cursed Skeleton"]=true,["Snowman"]=true,["Oni Soldier"]=true}
+local function FarmTargetEnemies()pcall(function()for i,v in pairs(workspace.Enemies:GetChildren())do if TargetEnemies[v.Name]and v:FindFirstChild("Humanoid")and v:FindFirstChild("HumanoidRootPart")and v.Humanoid.Health>0 then repeat task.wait()Attack.Kill(v,_G.AutoTrickOrTreat)until not _G.AutoTrickOrTreat or not v.Parent or v.Humanoid.Health<=0 end end end)end
+local function TeleportToDoor(cf)if not Root or not cf then return false end _tp(cf)repeat task.wait()local hasTargetEnemy=false for _,v in pairs(workspace.Enemies:GetChildren())do if TargetEnemies[v.Name]and v:FindFirstChild("Humanoid")and v.Humanoid.Health>0 then hasTargetEnemy=true break end end if hasTargetEnemy then return false end until not _G.AutoTrickOrTreat or(Root.Position-cf.Position).Magnitude<10 task.wait(0.5)return true end
+local function TrickAndClaim()for _,v in pairs(workspace:GetDescendants())do if v:IsA("ProximityPrompt")then local part=v.Parent if part and(Root.Position-part.Position).Magnitude<20 then pcall(function()fireproximityprompt(v)task.wait(0.5)HalloweenRemotes.Event:FireServer("ClaimReward")end)end end end end
+task.spawn(function()while task.wait(0.5)do if _G.AutoTrickOrTreat then pcall(function()local hasEnemies=false for _,v in pairs(workspace.Enemies:GetChildren())do if TargetEnemies[v.Name]and v:FindFirstChild("Humanoid")and v.Humanoid.Health>0 then hasEnemies=true break end end if hasEnemies then FarmTargetEnemies()else for _,cf in ipairs(Doors)do if not _G.AutoTrickOrTreat then break end local arrived=TeleportToDoor(cf)if not arrived then FarmTargetEnemies()break end if not _G.AutoTrickOrTreat then break end local startTime=tick()while tick()-startTime<5 and _G.AutoTrickOrTreat do TrickAndClaim()task.wait(0.5)end end end end)end end end)
+Main:AddToggle({Title="Auto Farm Unbound Werewolf Boss",Default=false,Callback=function(Value)_G.AutoFarmUnbound=Value end})
+spawn(function()while task.wait()do pcall(function()if _G.AutoFarmUnbound then for i,v in pairs(workspace.Enemies:GetChildren())do if v.Name=="Unbound Werewolf"and v:FindFirstChild("Humanoid")and v:FindFirstChild("HumanoidRootPart")then if v.Humanoid.Health>0 then repeat task.wait()Attack.Kill(v,_G.AutoFarmUnbound)until not _G.AutoFarmUnbound or not v.Parent or v.Humanoid.Health<=0 end end end end end)end end)
+Main:AddToggle({Title="Auto Random Candy Corn",Default=false,Callback=function(Value)_G.Random_Candy=Value end})
+spawn(function()while wait(Sec)do pcall(function()if _G.Random_Candy then replicated.Remotes.CommF_:InvokeServer("Cousin","HalloweenGacha25")end end)end end)
