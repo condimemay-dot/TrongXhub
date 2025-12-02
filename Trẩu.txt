@@ -1,4 +1,4 @@
-v--// This file was created by XHider https://discord.gg/infinityscript
+--// This file was created by XHider https://discord.gg/infinityscript
 
 	do
 		ply = game.Players
