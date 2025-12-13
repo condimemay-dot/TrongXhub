@@ -1,0 +1,256 @@
+print("Break");
+local v0 = require(game:GetService("ReplicatedStorage").Notification);
+v0.new("<Color=Cyan>Welcome To : TrongNguyen Hub<Color=/>"):Display();
+wait(0.5);
+repeat
+    wait();
+until game.Players.LocalPlayer
+if  not game:IsLoaded() then
+    game.Loaded:Wait();
+end
+print("Break");
+local v0 = require(game:GetService("ReplicatedStorage").Notification);
+v0.new("<Color=Cyan>Script Auto Farm Chest Blox Fruit...!<Color=/>"):Display();
+wait(0.5);
+repeat
+    wait();
+until game.Players.LocalPlayer
+if  not game:IsLoaded() then
+    game.Loaded:Wait();
+end
+print("Break");
+local v0 = require(game:GetService("ReplicatedStorage").Notification);
+v0.new("<Color=Cyan>https://discord.gg/tdgmfxtUtW<Color=/>"):Display();
+wait(0.5);
+repeat
+    wait();
+until game.Players.LocalPlayer
+if  not game:IsLoaded() then
+    game.Loaded:Wait();
+end
+
+--// Gravity Hub - Kaitun (UI Binini Fake)
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "GravityHubUI"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+
+local Blur = Instance.new("Frame", ScreenGui)
+Blur.Size = UDim2.new(1,0,1,0)
+Blur.BackgroundColor3 = Color3.fromRGB(0,0,0)
+Blur.BackgroundTransparency = 0.45
+Blur.ZIndex = 0
+
+local MainFrame = Instance.new("Frame", ScreenGui)
+MainFrame.Size = UDim2.new(0, 500, 0, 350)
+MainFrame.Position = UDim2.new(0.5, -250, 0.5, -175)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+MainFrame.BackgroundTransparency = 0.2
+MainFrame.BorderSizePixel = 0
+
+Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0,8)
+local stroke = Instance.new("UIStroke", MainFrame)
+stroke.Color = Color3.fromRGB(170,0,255)
+stroke.Thickness = 2
+
+local Title = Instance.new("TextLabel", MainFrame)
+Title.Size = UDim2.new(1,0,0,35)
+Title.BackgroundTransparency = 1
+Title.Text = "TrongNguyen Hub - Auto Collect Chest"
+Title.TextColor3 = Color3.fromRGB(200,150,255)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 18
+Title.TextXAlignment = Enum.TextXAlignment.Center
+
+local Line = Instance.new("Frame", MainFrame)
+Line.Size = UDim2.new(1,-40,0,2)
+Line.Position = UDim2.new(0,20,0,40)
+Line.BackgroundColor3 = Color3.fromRGB(255,255,255)
+
+local BodyFrame = Instance.new("Frame", MainFrame)
+BodyFrame.Size = UDim2.new(1,-40,1,-70)
+BodyFrame.Position = UDim2.new(0,20,0,60)
+BodyFrame.BackgroundTransparency = 1
+
+local StatsFrame = Instance.new("Frame", BodyFrame)
+StatsFrame.Size = UDim2.new(0.5,-10,1,0)
+StatsFrame.BackgroundTransparency = 1
+
+local StatsTitle = Instance.new("TextLabel", StatsFrame)
+StatsTitle.Size = UDim2.new(1,0,0,20)
+StatsTitle.BackgroundTransparency = 1
+StatsTitle.Text = "Account Stats"
+StatsTitle.TextColor3 = Color3.fromRGB(200,0,255)
+StatsTitle.Font = Enum.Font.GothamBold
+StatsTitle.TextSize = 15
+StatsTitle.TextXAlignment = Enum.TextXAlignment.Center
+
+local StatsList = Instance.new("UIListLayout", StatsFrame)
+StatsList.Padding = UDim.new(0,5)
+StatsList.SortOrder = Enum.SortOrder.LayoutOrder
+
+local function AddStat(parent, name, value)
+    local stat = Instance.new("TextLabel", parent)
+    stat.BackgroundTransparency = 1
+    stat.Size = UDim2.new(1,0,0,20)
+    stat.Text = name..": "..value
+    stat.TextColor3 = Color3.fromRGB(255,255,255)
+    stat.Font = Enum.Font.Gotham
+    stat.TextSize = 13
+    stat.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+
+
+local ItemsFrame = Instance.new("Frame", BodyFrame)
+ItemsFrame.Size = UDim2.new(0.5,-10,1,0)
+ItemsFrame.Position = UDim2.new(0.5,10,0,0)
+ItemsFrame.BackgroundTransparency = 1
+
+local ItemsTitle = Instance.new("TextLabel", ItemsFrame)
+ItemsTitle.Size = UDim2.new(1,0,0,20)
+ItemsTitle.BackgroundTransparency = 1
+ItemsTitle.Text = "Account Items"
+ItemsTitle.TextColor3 = Color3.fromRGB(200,0,255)
+ItemsTitle.Font = Enum.Font.GothamBold
+ItemsTitle.TextSize = 15
+ItemsTitle.TextXAlignment = Enum.TextXAlignment.Center
+
+local ItemsList = Instance.new("UIListLayout", ItemsFrame)
+ItemsList.Padding = UDim.new(0,5)
+ItemsList.SortOrder = Enum.SortOrder.LayoutOrder
+
+local function AddItem(parent, name, owned)
+    local frame = Instance.new("Frame", parent)
+    frame.Size = UDim2.new(1,0,0,20)
+    frame.BackgroundTransparency = 1
+
+    local dot = Instance.new("Frame", frame)
+    dot.Size = UDim2.new(0,12,0,12)
+    dot.Position = UDim2.new(0,0,0.5,-6)
+    dot.BackgroundColor3 = owned and Color3.fromRGB(0,255,0) or Color3.fromRGB(255,0,0)
+    dot.BorderSizePixel = 0
+    Instance.new("UICorner",dot).CornerRadius = UDim.new(1,0)
+
+    local txt = Instance.new("TextLabel", frame)
+    txt.Position = UDim2.new(0,20,0,0)
+    txt.Size = UDim2.new(1,-20,1,0)
+    txt.BackgroundTransparency = 1
+    txt.Text = name
+    txt.TextColor3 = Color3.fromRGB(255,255,255)
+    txt.Font = Enum.Font.Gotham
+    txt.TextSize = 13
+    txt.TextXAlignment = Enum.TextXAlignment.Left
+end
+AddItem(ItemsFrame,"Auto Farm Chest",true)
+AddItem(ItemsFrame,"GodHuman",false)
+AddItem(ItemsFrame,"Cursed Dual Katana",false)
+AddItem(ItemsFrame,"Valkyrie Helm",false)
+AddItem(ItemsFrame,"Skull Guitar",false)
+AddItem(ItemsFrame,"Mirror Fractal",false)
+AddItem(ItemsFrame,"Pull Lever",false)
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Locations = workspace._WorldOrigin.Locations
+
+local function getCharacter()
+    if not LocalPlayer.Character then
+        LocalPlayer.CharacterAdded:Wait()
+    end
+    LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+    return LocalPlayer.Character
+end
+
+local function DistanceFromPlrSort(ObjectList: table)
+    local RootPart = getCharacter().LowerTorso
+    table.sort(ObjectList, function(ChestA, ChestB)
+        local RootPos = RootPart.Position
+        local DistanceA = (RootPos - ChestA.Position).Magnitude
+        local DistanceB = (RootPos - ChestB.Position).Magnitude
+        return DistanceA < DistanceB
+    end)
+end
+
+local UncheckedChests, FirstRun = {}, true
+local function getChestsSorted()
+    if FirstRun then
+        FirstRun = false
+        for _, Object in pairs(game:GetDescendants()) do
+            if Object.Name:find("Chest") and Object.ClassName == "Part" then
+                table.insert(UncheckedChests, Object)
+            end
+        end
+    end
+    local Chests = {}
+    for _, Chest in pairs(UncheckedChests) do
+        if Chest:FindFirstChild("TouchInterest") then
+            table.insert(Chests, Chest)
+        end
+    end
+    DistanceFromPlrSort(Chests)
+    return Chests
+end
+
+local function toggleNoclip(Toggle: boolean)
+    for _, v in pairs(getCharacter():GetChildren()) do
+        if v:IsA("BasePart") then
+            v.CanCollide = not Toggle
+        end
+    end
+end
+
+local function Teleport(Goal: CFrame)
+    local RootPart = getCharacter().HumanoidRootPart
+    toggleNoclip(true)
+    RootPart.CFrame = Goal + Vector3.new(0, 3, 0)
+    toggleNoclip(false)
+end
+
+local function startFarm()
+    task.spawn(function()
+        while task.wait() do
+            local Chests = getChestsSorted()
+            if #Chests > 0 then
+                Teleport(Chests[1].CFrame)
+            else
+                
+            end
+        end
+    end)
+end
+
+
+task.spawn(function()
+    local rs = game:GetService("ReplicatedStorage")
+    while task.wait(5) do
+        pcall(function()
+            rs.Remotes.CommF_:InvokeServer("SetTeam","Marines")
+        end)
+    end
+end)
+
+
+LocalPlayer.CharacterAdded:Connect(function()
+    task.wait(1) 
+    startFarm()
+end)
+
+startFarm()
+-- Hàm kiểm tra
+    local function checkForHolyGrail()
+        local holyGrail = game.Workspace:FindFirstChild("HolyGrail") -- thay tên object ở đây
+        if holyGrail then
+            textLabel.Text = "Ngừng lại vì có Chén Thánh!"
+            -- Bạn có thể thêm lệnh để stop hành động ở đây
+        else
+            textLabel.Text = "Không có Chén Thánh, script chạy tiếp..."
+        end
+    end
+    
+    -- Kiểm tra mỗi 2 giây
+    while true do
+        checkForHolyGrail()
+        task.wait(2)
+    end
+    
