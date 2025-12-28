@@ -1,3 +1,34 @@
+-- ===== CONFIG =====
+local AllowedHWID = {
+    "nhtxhub",
+    "trong123"
+}
+
+-- ===== GET HWID =====
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
+
+-- ===== CHECK =====
+local function IsAllowed()
+    for _, id in pairs(AllowedHWID) do
+        if id == HWID then
+            return true
+        end
+    end
+    return false
+end
+
+if IsAllowed() then
+    print("không hợp lệ!")
+
+    
+
+else
+    LocalPlayer:Kick("HWID Không hợp Lệ !:\n"..HWID)
+end
 -- This file was deobfuscated using Scene Deobfuscator discord.gg/deobfuscate :D
 
 hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Death), function()
