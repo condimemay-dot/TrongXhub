@@ -3675,7 +3675,7 @@ v617.Parent = game.CoreGui
 local vu618 = Instance.new("ImageButton")
 vu618.Size = UDim2.new(0, 35, 0, 35)
 vu618.Position = UDim2.new(0.15, 0, 0.15, 0)
-vu618.Image = "rbxassetid://80424431930361"
+vu618.Image = "rbxassetid://125703309927676"
 vu618.BackgroundTransparency = 1
 vu618.Parent = v617
 local v619 = Instance.new("UICorner")
@@ -3726,7 +3726,7 @@ vu618.MouseButton1Click:Connect(function()
         vu616:Minimize(true)
     end
 end)
-local v484 = v466:MakeTab({"Th\195\180ng Tin | Info", "info"})
+local v484 = v466:MakeTab({"Info", "info"})
 local v485 = v466:MakeTab({"Farming", "home"})
 local v486 = v466:MakeTab({"Auto Fishing", "rbxassetid://127664059821666"})
 local v487 = v466:MakeTab({"Quest | Items", "swords"})
@@ -3742,8 +3742,8 @@ local v496 = v466:MakeTab({"Settings", "settings"})
 v484:AddDiscordInvite({
     Name = "Tham Gia Discord",
     Description = "Link Sever Discord",
-    Logo = "rbxassetid://110657725541747",
-    Invite = "https://discord.gg/kK2vMrUsQy"
+    Logo = "rbxassetid://125703309927676",
+    Invite = "https://discord.gg/HJYTA7wzrE"
 })
 local _ = v485:AddSection({"Select Melee,Sword,Gun,Fruit"})
 _G.SelectWeapon = "Melee"
