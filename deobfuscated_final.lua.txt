@@ -3669,77 +3669,85 @@ local v466 = loadstring(game:HttpGet("https://raw.githubusercontent.com/farehamh
     SubTitle = "By @_HoangTrong",
     SaveFolder = "Redz | redz lib v5.lua"
 })
-local l_ScreenGui_0 = Instance.new("ScreenGui")
-l_ScreenGui_0.Name = "ControlGUI"
-l_ScreenGui_0.Parent = game.CoreGui
-local l_ImageButton_0 = Instance.new("ImageButton")
-l_ImageButton_0.Size = UDim2.new(0, 50, 0, 50)
-l_ImageButton_0.Position = UDim2.new(0.15, 0, 0.15, 0)
-l_ImageButton_0.Image = "rbxassetid://75774010417827"
-l_ImageButton_0.BackgroundTransparency = 1
-l_ImageButton_0.Parent = l_ScreenGui_0
-local l_UICorner_0 = Instance.new("UICorner")
-l_UICorner_0.CornerRadius = UDim.new(0.25, 0)
-l_UICorner_0.Parent = l_ImageButton_0
-local l_UIStroke_0 = Instance.new("UIStroke")
-l_UIStroke_0.Thickness = 2
-l_UIStroke_0.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-l_UIStroke_0.Parent = l_ImageButton_0
-local v471 = {
-    Color3.fromRGB(255, 0, 0),
-    Color3.fromRGB(255, 127, 0),
-    Color3.fromRGB(255, 255, 0),
-    Color3.fromRGB(0, 255, 0),
-    Color3.fromRGB(0, 255, 255),
-    Color3.fromRGB(0, 0, 255),
-    Color3.fromRGB(139, 0, 255)
-}
-task.spawn(function()
-    local v472 = 1
-    while true do
-        l_UIStroke_0.Color = v471[v472]
-        v472 = v472 % #v471 + 1
-        task.wait(0.3)
-    end
-end)
-local v473 = true
-local v474 = nil
-local v475 = nil
-local v476 = nil
-local v477 = nil
-local function v480(v478)
-    local v479 = v478.Position - v476
-    l_ImageButton_0.Position = UDim2.new(v477.X.Scale, v477.X.Offset + v479.X, v477.Y.Scale, v477.Y.Offset + v479.Y)
-end
-l_ImageButton_0.InputBegan:Connect(function(v481)
-    if v481.UserInputType == Enum.UserInputType.Touch or v481.UserInputType == Enum.UserInputType.MouseButton1 then
-        v474 = true
-        v476 = v481.Position
-        v477 = l_ImageButton_0.Position
-        v481.Changed:Connect(function()
-            if v481.UserInputState == Enum.UserInputState.End then
-                v474 = false
-            end
-        end)
-    end
-end)
-l_ImageButton_0.InputChanged:Connect(function(v482)
-    if v482.UserInputType == Enum.UserInputType.Touch or v482.UserInputType == Enum.UserInputType.MouseMovement then
-        v475 = v482
-    end
-end)
-game:GetService("UserInputService").InputChanged:Connect(function(v483)
-    if v474 and v483 == v475 then
-        v480(v483)
-    end
-end)
-l_ImageButton_0.MouseButton1Click:Connect(function()
-    v473 = not v473
-    if v473 then
-        v466:Minimize(false)
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local ImageLabel = Instance.new("ImageLabel")
+local UICorner = Instance.new("UICorner")
+local TextButton = Instance.new("TextButton")
+
+ScreenGui.Parent = game:GetService("CoreGui")  
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.AnchorPoint = Vector2.new(0.1, 0.1)
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BackgroundTransparency = 0
+Frame.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Frame.BorderSizePixel = 1
+Frame.Position = UDim2.new(0, 20, 0.1, -6)  
+Frame.Size = UDim2.new(0, 50, 0, 50)
+Frame.Name = "dut dit"
+
+ImageLabel.Parent = Frame
+ImageLabel.Name = "Banana Test"
+ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+ImageLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
+ImageLabel.Size = UDim2.new(0, 40, 0, 40)
+ImageLabel.BackgroundColor3 = Color3.fromRGB(163, 162, 165)
+ImageLabel.BackgroundTransparency = 1
+ImageLabel.BorderSizePixel = 1
+ImageLabel.BorderColor3 = Color3.fromRGB(27, 42, 53)
+ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.Image = "http://www.roblox.com/asset/?id= 125703309927676"
+
+UICorner.CornerRadius = UDim.new(1, 0)
+UICorner.Parent = Frame
+
+TextButton.Name = "TextButton"
+TextButton.Parent = Frame
+TextButton.AnchorPoint = Vector2.new(0, 0)
+TextButton.Position = UDim2.new(0, 0, 0, 0)
+TextButton.Size = UDim2.new(1, 0, 1, 0)
+TextButton.BackgroundColor3 = Color3.fromRGB(163, 162, 165)
+TextButton.BackgroundTransparency = 1
+TextButton.BorderSizePixel = 1
+TextButton.BorderColor3 = Color3.fromRGB(27, 42, 53)
+TextButton.TextColor3 = Color3.fromRGB(27, 42, 53)
+TextButton.Text = ""
+TextButton.Font = Enum.Font.SourceSans
+TextButton.TextSize = 8
+TextButton.TextTransparency = 0
+
+local TweenService = game:GetService("TweenService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+local zoomedIn = false
+local originalSize = UDim2.new(0, 40, 0, 40)
+local zoomedSize = UDim2.new(0, 30, 0, 30)
+local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+local faded = false
+local fadeInTween = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 0.25})
+local fadeOutTween = TweenService:Create(Frame, tweenInfo, {BackgroundTransparency = 0})
+
+TextButton.MouseButton1Down:Connect(function()
+
+    if zoomedIn then
+        TweenService:Create(ImageLabel, tweenInfo, {Size = originalSize}):Play()
     else
-        v466:Minimize(true)
+        TweenService:Create(ImageLabel, tweenInfo, {Size = zoomedSize}):Play()
     end
+    zoomedIn = not zoomedIn
+
+    if faded then
+        fadeOutTween:Play()
+    else
+        fadeInTween:Play()
+    end
+    faded = not faded
+
+    VirtualInputManager:SendKeyEvent(true, "LeftControl", false, game)
 end)
 local v484 = v466:MakeTab({"Th\195\180ng Tin | Info", "info"})
 local v485 = v466:MakeTab({"Farming", "home"})
