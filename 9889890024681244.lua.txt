@@ -2121,46 +2121,43 @@ end end end end)
 			Title = "Disord"
 		}),
 		Server = Window:AddTab({
-			Title = "Server"
+			Title = "Status"
 		}),
 		Main = Window:AddTab({
-			Title = "Farm"
+			Title = "Main"
 		}),
 		Settings = Window:AddTab({
-			Title = "Cài đặt Farm"
-		}),
-		Melee = Window:AddTab({
-			Title = "Tự động lấy Võ V2"
+			Title = "Settings"
 		}),
 		Quests = Window:AddTab({
-			Title = "Nhiệm vụ - Vật phẩm"
+			Title = "Quests"
 		}),
 		SeaEvent = Window:AddTab({
-			Title = "Sự kiện Biển"
+			Title = "Sea Event"
 		}),
 		Mirage = Window:AddTab({
-			Title = "Đảo Mirage + Chủng tộc V4"
+			Title = "Mirage + Race V4"
 		}),
 		Drago = Window:AddTab({
-			Title = "Đảo Drago Dojo"
+			Title = "Drago Dojo"
 		}),
 		Prehistoric = Window:AddTab({
-			Title = "Tiền sử"
+			Title = "Prehistoric"
 		}),
 		Raids = Window:AddTab({
-			Title = "Đột kích"
+			Title = "Raids"
 		}),
 		Combat = Window:AddTab({
-			Title = "Chiến đấu PVP"
+			Title = "Combat"
 		}),
 		Travel = Window:AddTab({
-			Title = "Dịch chuyển"
+			Title = "Travel"
 		}),
 		Shop = Window:AddTab({
-			Title = "Cửa hàng"
+			Title = "Shop"
 		}),
 		Misc = Window:AddTab({
-			Title = "Khác"
+			Title = "Misc"
 		})
 	}
 
@@ -10766,7 +10763,7 @@ end)
 		end
 	})
 	Tabs.Server:AddButton({
-		Title = "Vào SERVER VIP FREE",
+		Title = "",
 		Description = "Tạo server riêng và teleport (cần >1 người)",
 		Callback = function()
 			task.spawn(function()
