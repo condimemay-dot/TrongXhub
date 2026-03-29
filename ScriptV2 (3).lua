@@ -2443,7 +2443,7 @@ screenGui.Parent = game.CoreGui
 local imageButton = Instance.new("ImageButton")
 imageButton.Size = UDim2.new(0, 50, 0, 50)
 imageButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-imageButton.Image = "rbxassetid://73902065845651"
+imageButton.Image = "rbxassetid://92242395936163"
 imageButton.BackgroundTransparency = 1
 imageButton.Parent = screenGui
 
@@ -2514,13 +2514,13 @@ imageButton.MouseButton1Click:Connect(function()
     end
 end)
 
-local Status = Library:MakeTab({
-    Title = "Discord",
-    Icon = "rbxassetid://7040410130"
-})
 local Shop = Library:MakeTab({
     Title = "Shop Tab",
     Icon = "rbxassetid://6031265976"
+})
+local Status = Library:MakeTab({
+    Title = "Status",
+    Icon = "rbxassetid://7040410130"
 })
 local Farm = Library:MakeTab({
     Title = "Farming",
@@ -2580,13 +2580,6 @@ local Setting = Library:MakeTab({
     Title = "Setting & UI",
     Icon = "rbxassetid://7734053495"
 })
-Status:AddDiscordInvite({
-    Name = "Server Discord Dark X Hub",
-    Description = "Cre : HoangTrong , ThienAn",
-    Logo = "rbxassetid://80845703924287",
-    Invite = "https://turbolite.xyz/discord"
-})
-
 Shop:AddSection("Fighting Shop")
 Shop:AddButton({
     Name = "Black Leg",
